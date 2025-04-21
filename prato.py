@@ -98,17 +98,9 @@ class Prato:
             alterando_info()
 
 
+    # Criando um método que nos permite mostrar os atributos daquele prato. 
 
-# prato = Prato("Pizza", 10.99)
-
-# prato.alterar_info()
-
-# print(prato.nome)
-
-# prato.nome = "pizza"
-
-# print(prato.nome)
-
-
-
+    def mostrar_prato(self):
+        print(f"""Nome: {self._nome}
+Praço: {self._preco}""")
 
