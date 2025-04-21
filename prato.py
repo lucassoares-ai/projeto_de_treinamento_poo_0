@@ -99,7 +99,7 @@ class Prato:
 
 
 
-prato = Prato("Pizza", 10.99)
+# prato = Prato("Pizza", 10.99)
 
 # prato.alterar_info()
 
