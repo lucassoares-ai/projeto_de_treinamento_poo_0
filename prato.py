@@ -100,7 +100,7 @@ class Prato:
 
     # Criando um método que nos permite mostrar os atributos daquele prato. 
 
-    def mostrar_prato(self):
+    def mostrar_prato(self):        
         print(f"""Nome: {self._nome}
 Praço: {self._preco}""")
 

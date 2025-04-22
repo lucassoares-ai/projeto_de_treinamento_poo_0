@@ -10,14 +10,14 @@ def gerar_codigo():
     letras = list(letras_maiusculas + letras_minusculas)
 
     codigo = ""
-    digitos_gerado = 0
+    digitos_gerados = 0
     while digitos_gerados < 5:
         numero = random.randint(0, 100000)
 
         if numero % 2 == 0:
             digito_numerico = random.randint(0, 10)
             codigo += str(digito_numerico)
-            digitos_gerado += 1
+            digitos_gerados += 1
 
         else:
             random.shuffle(letras)
@@ -26,7 +26,7 @@ def gerar_codigo():
 
             letras.remove(letra) 
 
-            digitos_gerado += 1
+            digitos_gerados += 1
 
 
     return codigo
