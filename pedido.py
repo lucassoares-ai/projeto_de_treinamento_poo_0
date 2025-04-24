@@ -27,17 +27,18 @@ class Pedido:
             print("Digite 2 para adicionar um prato ao pedido.")
             print("Digite 3 para remover algum prato.")
             print("Digite 4 para pagar.")
+            print("Digite 5 para encerrar operação.")
 
-            opcao = int(input("Indique a sua opção: "))
+            opcao_a = int(input("Indique a sua opção: "))
 
-            if opcao == 1:
+            if opcao_a == 1:
                 for item in self._cardapio:
                     item.mostrar_prato()
                     print("")
 
                 pedindo()
 
-            elif opcao == 2:
+            elif opcao_a == 2:
                 print("Adicionando prato!")
                 time.sleep(2)
                 nome_prato = input("Indique o nome do prato que você gostaria de adicionar ao pedido: ")
@@ -59,26 +60,26 @@ class Pedido:
                     #     time.sleep(2)
                     #     pedindo()
 
-            elif opcao == 3:
+            elif opcao_a == 3:
                 print("Removendo prato do pedido...")
                 time.sleep(2)
 
                 nome = input("Indique o nome do prato que você gostaria de remover do pedido: ")
                 for prato in self._pratos:
-                    if prato.nome.lower() == nome.lower():
+                    if prato.nome == nome:
                         self._pratos.remove(prato)
                         self._valor -= prato.preco
                         print("Prato removido com sucesso!")
                         print("...")
                         time.sleep(2)
                         pedindo()
-                    else:
-                        print("Este prato não está no pedido!")
-                        print("Voltando ao menu...")
-                        time.sleep(2)
-                        pedindo()
+                else:
+                    print("Este prato não está no pedido!")
+                    print("Voltando ao menu...")
+                    time.sleep(2)
+                    pedindo()
 
-            elif opcao == 4:
+            elif opcao_a == 4:
                 def pagando():
                     print(f"Valor: {self._valor}")
                     print(f"""Digite 1 para pagar com débito.
@@ -95,7 +96,7 @@ Digite 2 para pagar com crédito.""")
 
                         print("Pagamento concluído...")
                         time.sleep(2)
-                        pagando()
+                        pedindo()
 
                     elif opcao == 2:
                         print("Crédito selecionado...")
@@ -103,6 +104,13 @@ Digite 2 para pagar com crédito.""")
 
                         numero = int(input("Indique o número do seu cartão de crédito: "))
                         senha = int(input("indique a sua senha: "))
+
+                        # Pagando 
+                        print("Analizando...")
+                        time.sleep(2)
+
+                        print("Pagamento conluído...")
+                        time.sleep(2)
                         pedindo()
 
                     else:
@@ -124,12 +132,15 @@ um tipo de dados inteiro.""")
                     time.sleep(2)
                     pagando()
 
-            elif opcao == 5:
+            elif opcao_a == 5:
                 print("Encerrando o sistema...")
-                for prato in self._pratos:
-                    print(prato)
 
-                print(f"Valo: {self._valor}")
+                for prato in self._pratos:
+                    print(prato.mostrar_prato())
+
+                print(f"Valor: {self._valor}")
+
+                self._fim_pedido = datetime.now()
                 print(f"""Início pedido: {self._inicio_pedido}
 Termino pedido: {self._fim_pedido}""")
 
@@ -141,8 +152,9 @@ Termino pedido: {self._fim_pedido}""")
                 pedindo()
 
         try:
-            pedindo()
             self._inicio_pedido = datetime.now()
+            pedindo()
+
 
 
         except ValueError as a:
